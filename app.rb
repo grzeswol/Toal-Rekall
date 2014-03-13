@@ -1,5 +1,9 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'rack-flash'
+
+enable :sessions
+use Rack::Flash
 
 set :database, "sqlite3:///tasks.db"
 
@@ -24,9 +28,15 @@ post '/' do
 end
 
 get '/:id' do
+	begin
 	@task = Task.find params[:id]
-	@title = "edit note ##{params[:id]}"
+	@title = "Edit Note ##{params[:id]}"
 	erb :edit
+
+  rescue ActiveRecord::RecordNotFound
+		flash[:error] = "Note not found!"
+		redirect '/' 
+	end
 end
 
 
@@ -61,3 +71,13 @@ get '/:id/complete' do
 	redirect '/'
 end
 
+get '/*' do
+  redirect '/'
+end
+
+
+helpers do
+	def flash_types
+		[:success, :notice, :error, :warning]
+	end
+end

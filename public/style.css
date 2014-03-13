@@ -24,6 +24,11 @@ header h2 {
     color: #999;
 }
 
+#flash_error {
+	font-weight: bolder;
+	border: 2px solid rgba(243, 18, 18, 1);
+}
+
 #main {
     margin: 0 0 20px;
 }
@@ -32,7 +37,7 @@ header h2 {
     margin: 0 0 20px;
 }
  
-#add textarea {
+#add textarea, #edit textarea {
     height: 60px;
     width: 510px;
     padding: 10px;
@@ -40,29 +45,14 @@ header h2 {
     vertical-align:middle;
 }
  
-#add input {
+#add input, #edit input[type=submit] {
     height: 60px;
     width: 100px;
     margin: -50px 0 0;
     border: 1px solid #ddd;
     background: white;
     vertical-align:bottom;
-}
- 
-#edit textarea {
-    height: 30px;
-    width: 480px;
-    padding: 10px;
-    border: 1px solid #ddd;
-}
- 
-#edit input[type=submit] {
-    height: 50px;
-    width: 100px;
-    margin: -50px 0 0;
-    border: 1px solid #ddd;
-    background: white;
-}
+} 
  
 #edit input[type=checkbox] {
     height: 50px;

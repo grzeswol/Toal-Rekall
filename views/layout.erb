@@ -7,12 +7,20 @@
   <link href="/style.css" rel="stylesheet">
 </head>
 <body>
+	<% flash_types.select{|kind| flash.has?(kind) }.each do |kind| %>
+		<div id="flash_<%= kind %>">
+			<%= flash[kind] %>
+		</div>
+	<% end %>
+		
+
   <header>
 	  <hgroup>
 	  <h1><a href="/">Total Rekall</a></h1>
 		<h2>For the memory of a lifetime</h2>
 		</hgroup>
 	</header>
+
 
 	<div id="main">
 		<%= yield %>
